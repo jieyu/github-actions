@@ -1,5 +1,11 @@
 FROM python:3.7-slim-stretch
 
+RUN apt-get update \
+  && env DEBIAN_FRONTEND=noninteractive \
+     apt-get install -yq --no-install-recommends \
+     git shellcheck
+
+ 
 RUN pip3 install pre-commit
 
 LABEL name="pre-commit"
