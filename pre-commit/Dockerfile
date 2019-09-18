@@ -1,11 +1,11 @@
-FROM python:3.7-slim-stretch
+FROM golang:1.13-stretch
 
 RUN apt-get update \
   && env DEBIAN_FRONTEND=noninteractive \
      apt-get install -yq --no-install-recommends \
-     git shellcheck
+     python3 python3-pip python3-venv git shellcheck
 
- 
+RUN pip3 install setuptools wheel
 RUN pip3 install pre-commit
 
 LABEL name="pre-commit"
